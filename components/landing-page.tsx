@@ -204,7 +204,7 @@ export default function LandingPage({ totalEarned }: LandingPageProps) {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">Acesse as Plataformas que Estão Pagando</h2>
           <p className="text-xl text-slate-600 mb-12">
-            Desbloqueie a lista completa com as 7 plataformas verificadas que estão pagando usuários reais em 2024
+            Desbloqueie a lista completa com as 7 plataformas verificadas que estão pagando usuários reais em 2025
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -300,7 +300,7 @@ export default function LandingPage({ totalEarned }: LandingPageProps) {
             <span className="font-semibold text-amber-800 text-lg">Acesso por tempo limitado</span>
           </div>
           <p className="text-amber-700 text-lg">
-            As plataformas listadas estão pagando usuários reais em 2024. Acesso limitado para manter a qualidade das
+            As plataformas listadas estão pagando usuários reais em 2025. Acesso limitado para manter a qualidade das
             oportunidades.
           </p>
         </div>

@@ -9,9 +9,17 @@ import { CheckCircle, Star, Users, Shield, Clock, TrendingUp, Award, Coins, Smar
 
 interface LandingPageProps {
   totalEarned: number
+  basicPlanUrl?: string
+  vipPlanUrl?: string
+  premiumModalUrl?: string
 }
 
-export default function LandingPage({ totalEarned }: LandingPageProps) {
+export default function LandingPage({ 
+  totalEarned, 
+  basicPlanUrl = "https://pay.hotmart.com/basic-plan", 
+  vipPlanUrl = "https://pay.hotmart.com/vip-plan",
+  premiumModalUrl = "https://pay.hotmart.com/premium-discount"
+}: LandingPageProps) {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false)
 
   const features = [
@@ -283,7 +291,10 @@ export default function LandingPage({ totalEarned }: LandingPageProps) {
                   </li>
                 </ul>
 
-                <Button className="w-full h-12 text-base font-semibold bg-emerald-600 hover:bg-emerald-700">
+                <Button 
+                  className="w-full h-12 text-base font-semibold bg-emerald-600 hover:bg-emerald-700"
+                  onClick={() => window.open(premiumModalUrl, '_blank')}
+                >
                   Escolher VIP
                 </Button>
                 <p className="text-sm text-green-500 mt-2">💰 Usuários relatam até R$ 200+ por dia com dedicação</p>
@@ -353,20 +364,29 @@ export default function LandingPage({ totalEarned }: LandingPageProps) {
             </p>
 
             <div className="space-y-3">
-              <Button className="w-full h-11 text-sm font-semibold bg-emerald-600 hover:bg-emerald-700">
+              <Button 
+                className="w-full h-11 text-sm font-semibold bg-emerald-600 hover:bg-emerald-700"
+                onClick={() => window.open(vipPlanUrl, '_blank')}
+              >
                 🚀 Sim, quero o Premium com desconto!
               </Button>
               <Button
                 variant="outline"
                 className="w-full h-11 text-sm border-slate-300 hover:bg-slate-50"
-                onClick={() => setShowUpgradeModal(false)}
+                onClick={() => {
+                  setShowUpgradeModal(false)
+                  window.open(basicPlanUrl, '_blank')
+                }}
               >
                 Continuar com o Básico
               </Button>
               <Button
                 variant="ghost"
                 className="w-full h-9 text-xs text-slate-500 hover:text-slate-700"
-                onClick={() => setShowUpgradeModal(false)}
+                onClick={() => {
+                  setShowUpgradeModal(false)
+                  window.open(basicPlanUrl, '_blank')
+                }}
               >
                 Não, obrigado. Quero apenas o Básico por R$ 19,90
               </Button>

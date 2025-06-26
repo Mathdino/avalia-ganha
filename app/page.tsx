@@ -13,6 +13,7 @@ import DeliveryApp from "@/components/delivery-app"
 import FitnessApp from "@/components/fitness-app"
 import TigrinhoGame from "@/components/tigrinho-game"
 import VideoPlayer from "@/components/video-player"
+import { getSubscriptionUrls } from "@/lib/config"
 
 interface Task {
   id: number
@@ -208,7 +209,15 @@ export default function TaskApp() {
   }
 
   if (showLanding) {
-    return <LandingPage totalEarned={balance} />
+    const urls = getSubscriptionUrls()
+    return (
+      <LandingPage 
+        totalEarned={balance}
+        basicPlanUrl={urls.basicPlanUrl}
+        vipPlanUrl={urls.vipPlanUrl}
+        premiumModalUrl={urls.premiumModalUrl}
+      />
+    )
   }
 
   const currentTaskData = tasks[currentTask]

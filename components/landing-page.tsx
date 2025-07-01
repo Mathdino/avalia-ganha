@@ -28,22 +28,22 @@ export default function LandingPage({
     {
       icon: <Smartphone className="w-6 h-6" />,
       title: "Avaliações Mobile",
-      description: "Avalie apps, vídeos e jogos direto do seu celular",
+      description: "Faça tudo do seu celular, onde estiver.",
     },
     {
       icon: <TrendingUp className="w-6 h-6" />,
       title: "Ganhos Crescentes",
-      description: "Quanto mais você avalia, mais você ganha",
+      description: "A cada avaliação, você sobe de nível e ganha mais.",
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Pagamentos Seguros",
-      description: "Receba seus ganhos de forma rápida e segura",
+      description: "Via Pix, PayPal e outros métodos confiáveis",
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: "Comunidade Ativa",
-      description: "Mais de 50.000 avaliadores ativos",
+      description: "Milhares de brasileiros já estão lucrando com essas plataformas.",
     },
   ]
 
@@ -53,7 +53,7 @@ export default function LandingPage({
       text: "Testei 3 plataformas e saquei R$48 no meu segundo dia. Agora faço isso todo dia depois do trabalho!",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-      earnings: "R$ 1.200/mês",
+      earnings: "R$ 700/mês",
     },
     {
       name: "Carlos Mendes",
@@ -79,9 +79,9 @@ export default function LandingPage({
   ]
 
   const stats = [
-    { number: "15.000+", label: "Usuários Ativos" },
-    { number: "850K+", label: "Avaliações Realizadas" },
-    { number: "R$ 2.8M+", label: "Pagos aos Usuários" },
+    { number: "5.000+", label: "Usuários Ativos" },
+    { number: "120K+", label: "Avaliações Realizadas" },
+    { number: "R$ 1.8M+", label: "Pagos aos Usuários" },
     { number: "4.7★", label: "Avaliação da Plataforma" },
   ]
 
@@ -130,14 +130,13 @@ export default function LandingPage({
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Transforme Seu Tempo Livre em
+            Transforme Seu Celular em 
             <br />
-            <span className="text-emerald-600">Renda Extra Real</span>
+            <span className="text-emerald-600">Uma Fonte de Renda Extra Real</span>
           </h1>
 
           <p className="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Uma forma prática de gerar renda extra no seu tempo livre, usando apenas o celular. A maioria dos usuários
-            começa com R$20 a R$50 por dia, podendo chegar até R$200 dependendo do tempo disponível e dedicação.
+            Conheça agora as 7 plataformas que mais estão pagando para avaliar apps, vídeos e jogos — tudo de forma simples, segura e direto do seu celular. Comece ganhando de R$20 a R$50 por dia e, com consistência, chegue até R$200 diários!
           </p>
 
           {/* Stats */}
@@ -159,24 +158,24 @@ export default function LandingPage({
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-emerald-600">1</span>
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Receba Tarefas</h3>
-              <p className="text-slate-600">Acesse plataformas verificadas com tarefas de avaliação disponíveis</p>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Acesse as Plataformas</h3>
+              <p className="text-slate-600">Receba acesso exclusivo às 7 plataformas mais bem avaliadas de 2025, todas testadas e aprovadas.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-emerald-600">2</span>
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Avalie Conteúdo</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Execute Tarefas Simples</h3>
               <p className="text-slate-600">
-                Teste apps, assista vídeos ou jogue games e compartilhe sua opinião honesta
+                Avalie apps, assista a vídeos curtos ou jogue por alguns minutos. Só precisa do seu celular e uma opinião honesta.
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-emerald-600">3</span>
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Receba Pagamento</h3>
-              <p className="text-slate-600">Os valores variam conforme a tarefa e frequência de uso</p>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Ganhe em Reais ou Dólares</h3>
+              <p className="text-slate-600">Você recebe de acordo com o número de tarefas realizadas — e quanto mais fizer, mais ganha.</p>
             </div>
           </div>
         </div>

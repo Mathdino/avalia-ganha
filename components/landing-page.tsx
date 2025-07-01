@@ -21,6 +21,8 @@ export default function LandingPage({
   premiumModalUrl = "https://pay.hotmart.com/premium-discount"
 }: LandingPageProps) {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false)
+  const [showRegisterModal, setShowRegisterModal] = useState(false)
+  const [showMediumModal, setShowMediumModal] = useState(false)
 
   const features = [
     {
@@ -82,6 +84,20 @@ export default function LandingPage({
     { number: "R$ 2.8M+", label: "Pagos aos Usuários" },
     { number: "4.7★", label: "Avaliação da Plataforma" },
   ]
+
+  const handleRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const plano = (form.plano as HTMLSelectElement).value;
+    let url = "";
+    if (plano === "basic") url = basicPlanUrl;
+    else if (plano === "medium") url = vipPlanUrl;
+    else if (plano === "premium") url = premiumModalUrl;
+    setShowRegisterModal(false);
+    setTimeout(() => {
+      window.location.href = url;
+    }, 500);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -211,18 +227,30 @@ export default function LandingPage({
         {/* Pricing Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">Acesse as Plataformas que Estão Pagando</h2>
-          <p className="text-xl text-slate-600 mb-12">
+          <p className="text-xl text-slate-600 mb-6">
             Desbloqueie a lista completa com as 7 plataformas verificadas que estão pagando usuários reais em 2025
           </p>
-
+          <div className="mb-8 flex flex-col items-center justify-center">
+          <span className="inline-block bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-semibold text-sm md:text-lg animate-pulse mb-2">
+            Faça login ou cadastre-se e ganhe <span className="text-emerald-600 font-bold">desconto exclusivo</span> nos planos!
+          </span>
+            <Button
+              className="mt-4 w-full max-w-xs sm:w-72 sm:h-16 h-14 text-xs sm:text-sm md:text-base lg:text-lg font-extrabold bg-gradient-to-r from-emerald-500 to-emerald-700 text-white shadow-2xl border-4 border-emerald-300 hover:scale-105 hover:shadow-emerald-400 transition-transform duration-200 px-2 whitespace-nowrap overflow-hidden text-ellipsis"
+              onClick={() => setShowRegisterModal(true)}
+            >
+              🔒 ENTRAR OU CADASTRAR E GANHAR DESCONTO
+            </Button>
+          </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Basic Plan */}
             <Card className="p-8 border-2 border-slate-200 relative">
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">Acesso Básico</h3>
-                <div className="text-3xl font-bold text-slate-900 mb-2">R$ 19,90</div>
+                <div className="mb-2">
+                  <span className="block text-lg text-slate-400 line-through">R$ 29,90</span>
+                  <span className="block text-4xl font-extrabold text-emerald-600 drop-shadow-lg">R$ 19,90 <span className="text-base font-bold">com login</span></span>
+                </div>
                 <div className="text-slate-600 mb-6">/mês</div>
-
                 <ul className="space-y-4 mb-6 text-left">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
@@ -241,9 +269,8 @@ export default function LandingPage({
                     <span>Acesso a vídeos e apps</span>
                   </li>
                 </ul>
-
                 <Button
-                  onClick={() => setShowUpgradeModal(true)}
+                  onClick={() => setShowMediumModal(true)}
                   variant="outline"
                   className="w-full h-12 text-base font-semibold"
                 >
@@ -252,18 +279,18 @@ export default function LandingPage({
                 <p className="text-sm text-red-500 mt-2">🚨 ÚLTIMAS VAGAS HOJE!</p>
               </div>
             </Card>
-
             {/* VIP Plan */}
-            <Card className="p-8 border-2 border-emerald-500 relative bg-emerald-50">
+            <Card className="p-8 border-2 border-emerald-600 relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-emerald-500 text-white px-4 py-2">MAIS POPULAR</Badge>
+                <Badge className="bg-emerald-600 text-white px-4 py-2">MAIS PREMIUM</Badge>
               </div>
-
               <div className="text-center">
-                <h3 className="text-2xl font-semibold text-slate-900 mb-2">Acesso VIP</h3>
-                <div className="text-4xl font-bold text-slate-900 mb-2">R$ 97,00</div>
+                <h3 className="text-2xl font-semibold text-slate-900 mb-2">Acesso Premium</h3>
+                <div className="mb-2">
+                  <span className="block text-lg text-slate-400 line-through">R$ 109,90</span>
+                  <span className="block text-4xl font-extrabold text-emerald-600 drop-shadow-lg">R$ 97,00 <span className="text-base font-bold">com login</span></span>
+                </div>
                 <div className="text-slate-600 mb-8">/mês</div>
-
                 <ul className="space-y-4 mb-8 text-left">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
@@ -271,7 +298,7 @@ export default function LandingPage({
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    <span>Suporte prioritário 24/7</span>
+                    <span>Suporte VIP 24/7</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
@@ -279,26 +306,16 @@ export default function LandingPage({
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    <span>Acesso a jogos premium</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    <span>Bônus exclusivos</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    <span>Grupo VIP no Telegram</span>
+                    <span>Bônus exclusivos e grupo VIP</span>
                   </li>
                 </ul>
-
-                <Button 
+                <Button
                   className="w-full h-12 text-base font-semibold bg-emerald-600 hover:bg-emerald-700"
-                  onClick={() => window.open(premiumModalUrl, '_blank')}
+                  onClick={() => setShowRegisterModal(true)}
                 >
-                  Escolher VIP
+                  Escolher Premium
                 </Button>
-                <p className="text-sm text-green-500 mt-2">💰 Usuários relatam até R$ 200+ por dia com dedicação</p>
-                <p className="text-sm text-red-500">⏰ Lista atualizada mensalmente</p>
+                <p className="text-sm text-green-500 mt-2">💎 Acesso total e ganhos máximos!</p>
               </div>
             </Card>
           </div>
@@ -391,6 +408,96 @@ export default function LandingPage({
                 Não, obrigado. Quero apenas o Básico por R$ 19,90
               </Button>
             </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal de Cadastro/Login */}
+      <Dialog open={showRegisterModal} onOpenChange={setShowRegisterModal}>
+        <DialogContent className="max-w-sm mx-4 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl">Crie sua conta grátis e ganhe desconto!</DialogTitle>
+          </DialogHeader>
+          <form className="space-y-4 mt-4" onSubmit={handleRegisterSubmit}>
+            <div>
+              <label className="block text-left text-slate-700 font-medium mb-1">Nome completo</label>
+              <input type="text" name="nome" className="w-full border rounded-lg px-3 py-2" placeholder="Seu nome completo" required />
+            </div>
+            <div>
+              <label className="block text-left text-slate-700 font-medium mb-1">Chave Pix</label>
+              <input type="text" name="pix" className="w-full border rounded-lg px-3 py-2" placeholder="Sua chave Pix" required />
+            </div>
+            <div>
+              <label className="block text-left text-slate-700 font-medium mb-1">E-mail</label>
+              <input type="email" name="email" className="w-full border rounded-lg px-3 py-2" placeholder="Seu e-mail" required />
+            </div>
+            <div>
+              <label className="block text-left text-slate-700 font-medium mb-1">Senha</label>
+              <input type="password" name="senha" className="w-full border rounded-lg px-3 py-2" placeholder="Crie uma senha" required />
+            </div>
+            <div>
+              <label className="block text-left text-slate-700 font-medium mb-1">Escolha seu plano</label>
+              <input type="hidden" name="plano" value="medium" />
+            </div>
+            <Button type="submit" className="w-full h-12 text-base font-bold bg-emerald-600 hover:bg-emerald-700 mt-2 px-2 whitespace-nowrap overflow-hidden text-ellipsis">Cadastrar e Ganhar Desconto</Button>
+            <p className="text-xs text-center text-slate-500 mt-2">Já tem conta? <span className="text-emerald-600 font-semibold cursor-pointer">Entrar</span></p>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal do Plano Médio */}
+      <Dialog open={showMediumModal} onOpenChange={setShowMediumModal}>
+        <DialogContent className="max-w-sm mx-4 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-center text-2xl font-bold text-emerald-700">Plano Médio com Desconto Exclusivo!</DialogTitle>
+          </DialogHeader>
+          <div className="text-center space-y-4 mt-2">
+            <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl p-4">
+              <div className="text-base text-slate-500 line-through">De R$ 69,90</div>
+              <div className="text-4xl font-extrabold text-emerald-600 mb-1">Por R$ 47,00</div>
+              <div className="text-sm text-emerald-700">Desconto especial para novos usuários!</div>
+            </div>
+            <div className="bg-slate-50 rounded-xl p-4">
+              <h4 className="font-semibold text-slate-900 mb-3 text-base">O Plano Médio inclui:</h4>
+              <ul className="space-y-2 text-left text-sm">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <span>10 avaliações por dia</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <span>Suporte prioritário</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <span>Pagamentos a cada 3 dias</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <span>Acesso a jogos premium</span>
+                </li>
+              </ul>
+            </div>
+            <Button
+              className="w-full h-12 text-base font-bold bg-emerald-600 hover:bg-emerald-700 mt-2"
+              onClick={() => { setShowMediumModal(false); setShowRegisterModal(true); }}
+            >
+              Comprar com Desconto
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full h-10 text-sm font-semibold mt-2 border-slate-300 text-slate-700 hover:bg-slate-50"
+              onClick={() => { setShowMediumModal(false); window.location.href = basicPlanUrl; }}
+            >
+              Comprar o Plano Básico
+            </Button>
+            <Button
+              variant="ghost"
+              className="w-full h-10 text-xs text-slate-500 hover:text-slate-700"
+              onClick={() => setShowMediumModal(false)}
+            >
+              Voltar
+            </Button>
           </div>
         </DialogContent>
       </Dialog>

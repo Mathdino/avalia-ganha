@@ -249,7 +249,6 @@ export default function LandingPage({
                   <span className="block text-lg text-slate-400 line-through">R$ 29,90</span>
                   <span className="block text-4xl font-extrabold text-emerald-600 drop-shadow-lg">R$ 19,90 <span className="text-base font-bold">com login</span></span>
                 </div>
-                <div className="text-slate-600 mb-6">/mês</div>
                 <ul className="space-y-4 mb-6 text-left">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
@@ -289,7 +288,6 @@ export default function LandingPage({
                   <span className="block text-lg text-slate-400 line-through">R$ 109,90</span>
                   <span className="block text-4xl font-extrabold text-emerald-600 drop-shadow-lg">R$ 97,00 <span className="text-base font-bold">com login</span></span>
                 </div>
-                <div className="text-slate-600 mb-8">/mês</div>
                 <ul className="space-y-4 mb-8 text-left">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500" />
